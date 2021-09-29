@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="index.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Pod request access landing page</title>
+</head>
+<body>
+  <main>
+    <section>
+      <img class="logo" src="./assets/desktop/logo.svg" alt="logo" />
+      <h1>
+        <span class="green-text">Publish your podcasts</span><span class="white-text"> everywhere.</span>
+      </h1>
+      <p>
+        Upload your audio to Pod with a single click. We’ll then distribute your podcast to Spotify, 
+        Apple Podcasts, Google Podcasts, Pocket Casts and more!
+      </p>
+      <form onsubmit="mailValidation(event)" novalidate>
+        <div class="btn-inpt-container">
+          <input class="full-width" type="email" placeholder="Email address">
+          <div id="mail-validation">
+            Oops! Please, check your email.
+          </div>
+          <button type="submit">
+            Request access
+          </button>
+        </div>
+
+      </form>
+      <footer>
+        <img src="assets/desktop/spotify.svg" alt="spotify" />
+        <img src="./assets/desktop/apple-podcast.svg" alt="apple-podcast" />
+        <img src="./assets/desktop/google-podcasts.svg" alt="google-podcasts" />
+        <img src="./assets/desktop/pocket-casts.svg" alt="pocket-casts" />
+      </footer>
+    </section>
+
+  </main>
+<script>
+function mailValidation(e) {
+    e.preventDefault()
+    const regex = /.+@.+\.com/
+    const email = e.target.querySelector("input[type='email']")
+    const isValid = regex.test(email.value)
+    let validationDOMElement = document.querySelector("#mail-validation")
+    if(isValid) {
+      validationDOMElement.style.cssText = "display: block; color: green"
+      validationDOMElement.innerText = "Access granted"
+    } else {
+      validationDOMElement.style.cssText = "display: block; color: red"
+    }
+  } 
+</script>
+</body>
+</html>
